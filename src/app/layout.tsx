@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { DadosProvider } from '@/contexts/dados-context'
+import { PdfProvider } from '@/contexts/pdf-context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <DadosProvider>
+        <PdfProvider>
+          <body className={inter.className}>{children}</body>
+        </PdfProvider>
+      </DadosProvider>
     </html>
   )
 }
