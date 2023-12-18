@@ -6,5 +6,5 @@ import { Button } from "./button";
 export const TIPdfButton = () => {
     const { toPDF } = usePdfContext();
 
-    return <Button onClick={() => toPDF()} className="hover:bg-emerald-500 hover:text-white transition-colors hover:shadow-none">Gerar PDF</Button>
+    return <Button onClick={() => toPDF()} className="hover:bg-emerald-500 hover:text-white hover:shadow-none transition-colors">Gerar PDF</Button>
 }

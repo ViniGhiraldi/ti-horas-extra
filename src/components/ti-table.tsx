@@ -34,13 +34,15 @@ export const TITable = () => {
                 </Table.Td>
               </Table.Tr>
             ))}
-            <Table.Tr>
-              <Table.Td className="border-none"></Table.Td>
-              <Table.Td className="border-none"></Table.Td>
-              <Table.Td className="border-none"></Table.Td>
-              <Table.Td>Total: {totalHoras}</Table.Td>
-              <Table.Td className="border-none"></Table.Td>
-            </Table.Tr>
+            {dados && dados.length > 0 && (
+              <Table.Tr>
+                <Table.Td className="border-none"></Table.Td>
+                <Table.Td className="border-none"></Table.Td>
+                <Table.Td className="border-none"></Table.Td>
+                <Table.Td>Total: {totalHoras}</Table.Td>
+                <Table.Td className="border-none"></Table.Td>
+              </Table.Tr>
+            )}
           </Table.TableBody>
         </Table.TableRoot>
       </div>
