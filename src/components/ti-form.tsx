@@ -50,7 +50,7 @@ export const TIForm = () => {
 
     return(
         <Card.CardRoot>
-            <Card.CardHeader>Formulário</Card.CardHeader>
+            <Card.CardHeader>Horas-Extras TI</Card.CardHeader>
             <Card.CardContent>
                 <form className="flex flex-col gap-2 w-56" onSubmit={handleOnSubmit}>
                     <div className="flex flex-col">
