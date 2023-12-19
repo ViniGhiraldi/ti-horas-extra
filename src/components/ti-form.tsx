@@ -35,14 +35,13 @@ export const TIForm = () => {
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if(formDados){
-            const idAsString = id as string;
-            handleEditDados({date, entrada, saida, id: idAsString});
-            resetForm(true);
-        }else{
-            if(date && entrada && saida) {
-                handleAddDados({date, entrada, saida, id: self.crypto.randomUUID()});
+        if (date && entrada && saida) {
+            if (formDados) {
+                const idAsString = id as string;
+                handleEditDados({ date, entrada, saida, id: idAsString });
+                resetForm(true);
+            } else {
+                handleAddDados({ date, entrada, saida, id: self.crypto.randomUUID() });
                 resetForm();
             }
         }

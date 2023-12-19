@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { DadosProvider } from '@/contexts/dados-context'
 import { PdfProvider } from '@/contexts/pdf-context'
+import { UserProvider } from '@/contexts/user-context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <DadosProvider>
         <PdfProvider>
-          <body className={inter.className}>{children}</body>
+          <UserProvider>
+            <body className={inter.className}>{children}</body>
+          </UserProvider>
         </PdfProvider>
       </DadosProvider>
     </html>

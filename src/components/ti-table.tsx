@@ -4,13 +4,15 @@ import { useDadosContext } from "@/contexts/dados-context"
 import { Table } from "./table"
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { usePdfContext } from "@/contexts/pdf-context";
+import { TIUsernameInput } from "./ti-username-input";
 
 export const TITable = () => {
     const { dados, handleFormDados, handleExcludeDados, totalHoras } = useDadosContext();
     const { targetRef } = usePdfContext();
 
     return (
-      <div ref={targetRef} className="w-full">
+      <div ref={targetRef} className="w-full space-y-2 max-w-full overflow-auto">
+        <TIUsernameInput className="w-full"/>
         <Table.TableRoot>
           <Table.TableHead>
             <Table.Tr>

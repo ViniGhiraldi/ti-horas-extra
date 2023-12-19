@@ -80,10 +80,15 @@ export const DadosProvider = ({ children }: {children: React.ReactNode}) => {
         return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
     }, [])
 
+    const handleConvertDate = useCallback((date: string) => {
+        return new Date(date).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+    }, [])
+
     const handleAddDados = useCallback((dado: IDadosEntrada) => {
         const tempoTotal = calcTempoTotal(dado.entrada, dado.saida);
 
         if(tempoTotal){
+            dado.date = handleConvertDate(dado.date);
             setDados(oldValue => oldValue ? [{...dado, tempoTotal}, ...oldValue] : [{...dado, tempoTotal}]);
         }
     }, [])
@@ -92,6 +97,7 @@ export const DadosProvider = ({ children }: {children: React.ReactNode}) => {
         const tempoTotal = calcTempoTotal(dado.entrada, dado.saida);
 
         if(tempoTotal){
+            dado.date = handleConvertDate(dado.date);
             setDados(oldValue => {
                 const newValue = oldValue?.map(val => {
                     if(val.id === dado.id){
@@ -111,8 +117,14 @@ export const DadosProvider = ({ children }: {children: React.ReactNode}) => {
         })
     }, [])
     
-    const handleFormDados = useCallback((dados: IDadosEntrada | undefined) => {
-        setFormDados(dados);
+    const handleFormDados = useCallback((dados?: IDadosEntrada) => {
+        if(dados){
+            const dateArray = dados.date.split('/');
+            const date = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`;
+            setFormDados({...dados, date});
+        }else{
+            setFormDados(undefined);
+        }
     }, [])
 
     return(
